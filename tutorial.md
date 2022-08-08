@@ -11,6 +11,8 @@
 - **git version** показать текущую версию git
 - **git** команда для работы с репозиториями git
 - **git merge** - объединяет ветку branch_name с текущей веткой
-
+- **git branch (-d)(branch_name)**
+        - создает ветку *branch_name*
+        - с ключом *-d* удаляет ветку *branch_name*
 
 
