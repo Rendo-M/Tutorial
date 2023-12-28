@@ -1,18 +1,24 @@
 version: '3'
+
 services:
   web:
-    image: my-web-image
+    build: ./web
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/web_django
     ports:
-
-      – "80:80"
+      - '8000:8000'
     depends_on:
-
-      – db
+      - db
   db:
     image: mysql:5.7
+    ports:
+      - '3306:3306'
     environment:
-      MYSQL_ROOT_PASSWORD: secret
-      MYSQL_DATABASE: my_database
-volumes:
-  db-data:
-    driver: local
+      MYSQL_DATABASE: 'db_django'
+      MYSQL_USER: 'root'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    restart: always
+    volumes:
+      - ./db_django:/var/lib/mysql
